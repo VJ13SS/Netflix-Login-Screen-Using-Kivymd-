@@ -1,3 +1,7 @@
+#All the adjustments made here are for my mobile since the code is made on my mobile.
+#Adjust it as per your screen 
+
+
 from kivymd.app import MDApp
 from kivymd.uix.screen import Screen
 from kivy.uix.image import Image
@@ -20,7 +24,7 @@ class MYApp(MDApp):
 		
 		self.screen = Screen()
 		
-		#Adding Image	
+		#Adding Image (Ensure that The image and your code are in the same directory)
 		self.screen.add_widget(Image(source = 'Netflix logo.jpg',pos_hint = {'center_x' : 0.3,'center_y':0.9}))
 		
 		
@@ -35,7 +39,6 @@ class MYApp(MDApp):
 		self.label5 = MDLabel(text = 'New to Netflix?',pos_hint = {'center_x': 0.215,'center_y' : 0.165},halign = 'center',theme_text_color = 'Secondary',size_hint_y = None)
 		
 		self.label6 = MDLabel(text = 'Sign up now.',bold = True,pos_hint = {'center_x': 0.48,'center_y' : 0.165},halign = 'center',theme_text_color = 'Primary',size_hint_y = None)
-		
 		
 		self.label7 = MDLabel(text = '''This page is protected by Google reCAPTCHA to ensure
 you're not a bot.''',pos_hint = {'center_x': 0.575,'center_y' : 0.10},theme_text_color = 'Hint',font_style = 'Subtitle2',size_hint_y =None)
@@ -67,12 +70,13 @@ you're not a bot.''',pos_hint = {'center_x': 0.575,'center_y' : 0.10},theme_text
 		
 		self.button2 = MDFlatButton(text = 'Use a sign-in code',font_style = 'Subtitle1',pos_hint = {'center_x':0.5,'center_y':0.32},size_hint = (0.88,0.060),md_bg_color = (0.22,0.22,0.22,1))
 		
-		if self.textfield2.text == '':
-			self.button3 = MDIconButton(icon = 'eye-off',font_style = 'Subtitle1',pos_hint = {'center_x':0.845,'center_y':0.545},size_hint = (0.10,0.05),md_bg_color = (0.07,0.07,0.07,1),on_release = self.toggle_eye)
-			self.screen.add_widget(self.button3)
+		
+		self.button3 = MDIconButton(icon = 'eye-off',font_style = 'Subtitle1',pos_hint = {'center_x':0.845,'center_y':0.545},size_hint = (0.10,0.05),md_bg_color = (0.07,0.07,0.07,1),on_release = self.toggle_eye)
+			
 		
 		self.screen.add_widget(self.button1)
 		self.screen.add_widget(self.button2)
+		self.screen.add_widget(self.button3)
 		
 		
 		#to add checkbox
@@ -81,7 +85,7 @@ you're not a bot.''',pos_hint = {'center_x': 0.575,'center_y' : 0.10},theme_text
 		
 		return self.screen
 				
-	#to toggle the icon
+	#to toggle the icon 
 	def toggle_eye(self,obj):
 		if self.button3.icon == 'eye-off':
 			self.button3.icon = 'eye'
@@ -94,8 +98,8 @@ you're not a bot.''',pos_hint = {'center_x': 0.575,'center_y' : 0.10},theme_text
 	def sign_in(self,obj):
 		if self.textfield1.text != '' and self.textfield2.text != '' and 4<= len(self.textfield2.text) <= 60:
 			
-			#to check if email is valid or not
-			if '@' in self.textfield1.text and '.com'  in self.textfield1.text:			
+			#to check if email or the phone number entered is valid or not
+			if '@' in self.textfield1.text and '.com'  in self.textfield1.text or (len(self.textfield1.text) == 10 and self.textfield1.text.isdigit()):			
 				self.textfield1.text = ''			
 				self.textfield2.text = ''
 
